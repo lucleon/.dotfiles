@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/luka/vision/vpu/apps/localization_engine/loc_engine_ws/src/loc_engine/scripts/road_mapping'
+let g:netrw_dirhist_2='/home/luka/vision/2d-camera-rtk-based-mapping/localization'
+let g:netrw_dirhist_1='/home/luka/isaac/sdk/packages/ros_bridge'
+let g:netrw_dirhist_0='/home/luka/isaac/sdk/packages/zed/components'
+let g:netrw_dirhist_9='/home/luka/isaac/sdk/packages/ml/apps/generate_kitti_dataset'
+let g:netrw_dirhist_8='/home/luka/isaac/sdk/packages/visual_slam/apps'
+let g:netrw_dirhist_7='/home/luka/isaac/sdk/packages/visual_slam'
+let g:netrw_dirhist_6='/home/luka/isaac/sdk/apps/tutorials/opencv_edge_detection_pi'
+let g:netrw_dirhist_5='/home/luka/isaac/sdk/apps/samples'
+let g:netrw_dirhist_4='/home/luka/isaac/sdk/apps/samples/argus_camera'
