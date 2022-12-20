@@ -36,8 +36,16 @@ end
 local servers = { 'pyright', 'clangd' }
 for _, lsp in pairs(servers) do
     require('lspconfig')[lsp].setup {
+      filetypes = {"python"},
       on_attach = on_attach,
       flags = lsp_flags,
+      settings={
+        python= {
+          analysis = {
+            typeCheckingMode = "off"
+          }
+        }
+      }
     }
 end
 

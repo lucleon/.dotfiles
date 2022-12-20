@@ -14,6 +14,8 @@ set updatetime=300
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+set encoding=utf-8
+set fileencoding=utf-8
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if has("patch-8.1.1564")
@@ -30,6 +32,13 @@ Plug 'sunjon/stylish.nvim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'rhysd/vim-clang-format'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }                                                                                                                                                           
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 
 colorscheme catppuccin " catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha                                                                                                       
@@ -58,7 +67,10 @@ nnoremap <silent> <c-k>TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-ö> :TmuxNavigatePrevious<cr>
 
+set completeopt =menu,menuone,noselect
+
 lua << EOF
 local utils = require("lsp")
 require'lspconfig'.clangd.setup{}
+require('modules.plugins')
 EOF
