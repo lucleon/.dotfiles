@@ -22,6 +22,14 @@ return require('packer').startup(function(use)
         'hrsh7th/cmp-nvim-lsp-signature-help',
     })
 
+-- Snippets
+    use({
+        'L3MON4D3/luasnip',
+        requires = {
+            'rafamadriz/friendly-snippets',
+        },
+    })
+
     use({
       'nvim-treesitter/nvim-treesitter',
     })
