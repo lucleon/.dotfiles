@@ -186,6 +186,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- required servers
 for _, server in ipairs({
     'pyright',
+    'clangd'
 }) do
     require('modules.lsp.' .. server).setup(on_attach, capabilities)
 end
