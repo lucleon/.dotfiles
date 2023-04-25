@@ -42,4 +42,14 @@ return require('packer').startup(function(use)
         'RRethy/vim-illuminate',
     })
 
+  -- fuzzy finder
+  use {
+	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+	  -- or                            , branch = '0.1.x',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- git
+  use("tpope/vim-fugitive")
+
 end)
