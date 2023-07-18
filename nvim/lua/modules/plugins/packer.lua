@@ -52,4 +52,18 @@ return require('packer').startup(function(use)
   -- git
   use("tpope/vim-fugitive")
 
+  -- markdown
+	use({
+	    "iamcco/markdown-preview.nvim",
+	    run = function() vim.fn["mkdp#util#install"]() end,
+	})
+
+  -- statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
+
+  -- icons
+  use 'nvim-tree/nvim-web-devicons'
 end)
