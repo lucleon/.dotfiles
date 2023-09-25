@@ -1,13 +1,10 @@
+vim.g.mapleader = ','
+
 cmd = vim.cmd
 local fn = vim.fn
 local g = vim.g
 local opt = vim.opt
 
-require('modules.core')
-require('modules.plugins')
-require('modules.lsp')
-
-cmd.colorscheme "catppuccin"
 opt.completeopt = {'menu', 'menuone' , 'noselect'}
 opt.hidden = true
 opt.expandtab = true
@@ -29,5 +26,6 @@ opt.termguicolors = true            -- True color support
 opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
 
---local ts = require 'nvim-treesitter.configs'
---ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+require('custom')
+
+require("lazy").setup("plugins")

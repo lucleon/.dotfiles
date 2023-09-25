@@ -1,14 +1,23 @@
 -- https://github.com/hrsh7th/nvim-cmp
-local u = require('utils')
-local cmp_ok, cmp = pcall(require, 'cmp')
-local luasnip_ok, luasnip = pcall(require, 'luasnip')
-local cmp_autopair_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+return{
+  'hrsh7th/nvim-cmp',
+  event = 'InsertEnter',
+  dependencies = {
+    'hrsh7th/cmp-nvim-lsp',
+    'saadparwaiz1/cmp_luasnip'
+  }
+}
+-- local u = require('utils')
+-- local cmp_ok, cmp = pcall(require, 'cmp')
+-- local luasnip_ok, luasnip = pcall(require, 'luasnip')
+-- local cmp_autopair_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 
+--[[
 if not cmp_ok then
     u.notif('Plugins :', 'Something went wrong with nvim-cmp', vim.log.levels.WARN)
     return
 else
-    cmp.setup({
+    cmp.init({
         snippet = {
             expand = function(args)
                 if luasnip_ok then
@@ -92,10 +101,10 @@ else
         }),
         sources = cmp.config.sources({
             { name = 'nvim_lsp', priority = 5, max_item_count = 5 },
-            { name = 'buffer', priority = 4, max_item_count = 3 },
+            { name = 'buffer', priority = 4, max_item_count = 4 },
             { name = 'rg', priority = 3, max_item_count = 3 },
             { name = 'luasnip', priority = 2, max_item_count = 3 },
-            { name = 'path', priority = 1, max_item_count = 3 },
+            { name = 'path', priority = 1, max_item_count = 5 },
             { name = 'nvim_lsp_signature_help' },
             { name = 'nvim_lua' },
         }),
@@ -106,5 +115,5 @@ end
 local autopairs_ok, autopairs = pcall(require, 'nvim-autopairs')
 
 if autopairs_ok then
-    autopairs.setup()
-end
+    autopairs.init()
+end]]

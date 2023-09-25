@@ -1,4 +1,16 @@
-local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
+return {
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        event = { 'BufReadPost', 'BufNewFile' },
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
+            'windwp/nvim-ts-autotag',
+            'nvim-treesitter/nvim-treesitter-refactor',
+        }
+      }
+    }
+--[[local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
 
 if not treesitter_ok then
     u.notif('Plugins :', 'Something went wrong with treesitter', vim.log.levels.WARN)
@@ -73,7 +85,6 @@ else
                 set_jumps = true,
                 goto_next_start = {
                     [']m'] = '@function.outer',
-                    [']]'] = '@class.outer',
                 },
                 goto_next_end = {
                     [']M'] = '@function.outer',
@@ -91,4 +102,4 @@ else
         },
         autopairs = { enable = true },
     })
-end
+end]]
