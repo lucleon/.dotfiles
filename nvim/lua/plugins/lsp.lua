@@ -1,5 +1,5 @@
 return {
-  {'VonHeikemen/lsp-zero.nvim', 
+  {'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     dependencies = {
             "neovim/nvim-lspconfig",
@@ -16,9 +16,6 @@ return {
             { "lukas-reineke/lsp-format.nvim", config = true },
         },
     config = function()
-      local lsp = require("lsp-zero")
-      lsp.preset('recommend')
-
       local cmp = require('cmp')
       local cmp_action = require('lsp-zero').cmp_action()
 
@@ -50,14 +47,17 @@ return {
       --  mapping = cmp_mappings
       --})
 
-      lsp.on_attach(function(client, bufnr)
-        local opts = {buffer = bufnr, remap = false}
+      --lsp.on_attach(function(client, bufnr)
+        --local opts = {buffer = bufnr, remap = false}
 
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-      end)
+        --vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        --vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+      --end)
 
       local lsp_zero = require('lsp-zero')
+      lsp_zero.on_attach(function(client, bufnr)
+        lsp_zero.default_keymaps({buffer = bufnr})
+      end)
       require('mason').setup({})
       require("mason-lspconfig").setup({
         ensure_installed = {"lua_ls", "pyright", "clangd"},
