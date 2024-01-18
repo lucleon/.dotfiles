@@ -1,12 +1,8 @@
 return {
   "epwalsh/obsidian.nvim",
+  version = "*",
   lazy = true,
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    "BufReadPre /home/luka/Dokumente/vault/**.md",
-    "BufNewFile /home/luka/Dokumente/vault/**.md",
-  },
+  ft = "markdown",
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
@@ -14,8 +10,22 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-    dir = "/home/luka/Dokumente/vault",  -- no need to call 'vim.fn.expand' here
-
+    workspaces = {
+      {
+        name = "work",
+        path = "/home/luka/Dokumente/vault",
+      }
+    },
+    daily_notes = {
+      date_format = "%Y/%m-%By/%Y-%m-%d-%a",
+      --date_format = "%Y/%m-%mmmmm/%YYYY-%MM-%DD-%dddd",
+      alias_format = "%B %-d, %Y",
+    },
+    templates = {
+      subdir = "my-templates-folder",
+      date_format = "%Y-%m-%d-%a",
+      time_format = "%H:%M",
+    }
     -- see below for full list of options 👇
   },
 }
