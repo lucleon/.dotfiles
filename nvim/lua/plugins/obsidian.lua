@@ -17,7 +17,8 @@ return {
       }
     },
     daily_notes = {
-      date_format = "%Y/%m-%By/%Y-%m-%d-%a",
+      -- this requires english locale
+      date_format = "%Y/%m-%B/%Y-%m-%d-%a",
       --date_format = "%Y/%m-%mmmmm/%YYYY-%MM-%DD-%dddd",
       alias_format = "%B %-d, %Y",
     },
