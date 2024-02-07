@@ -26,6 +26,14 @@ return {
       subdir = "my-templates-folder",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
+    },
+    completion = {
+      nvim_cmp = true,
+      min_chars = 2,
+      new_notes_location = "current_dir",
+      prepend_note_id = false,
+      prepend_note_path = false,
+      use_path_only = true,
     }
     -- see below for full list of options 👇
   },
