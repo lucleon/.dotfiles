@@ -38,7 +38,7 @@ return {
           {name = 'nvim_lsp'},
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-y>'] = cmp.mapping.confirm({select = false}),
+          ['<CR>'] = cmp.mapping.confirm({select = false}),
           ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-d>'] = cmp.mapping.scroll_docs(4),
           ['<C-f>'] = cmp_action.luasnip_jump_forward(),
