@@ -21,7 +21,8 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      {'L3MON4D3/LuaSnip'},
+      {'L3MON4D3/LuaSnip',
+      'hrsh7th/cmp-path'},
     },
     config = function()
       -- Here is where you configure the autocompletion settings.
@@ -36,6 +37,7 @@ return {
         formatting = lsp_zero.cmp_format({details = true}),
         sources = {
           {name = 'nvim_lsp'},
+          {name = 'path'}
         },
         mapping = cmp.mapping.preset.insert({
           ['<CR>'] = cmp.mapping.confirm({select = false}),
@@ -49,6 +51,14 @@ return {
             require('luasnip').lsp_expand(args.body)
           end,
         },
+      })
+      cmp.setup.cmdline(":", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, {
+          { name = "cmdline" },
+        }),
       })
     end
   },
