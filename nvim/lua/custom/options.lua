@@ -19,4 +19,6 @@ vim.opt.termguicolors = true            -- True color support
 vim.opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 vim.opt.wrap = false                    -- Disable line wrap
 vim.opt.conceallevel=2
-
+vim.opt.listchars = {
+  trail = '-'
+}
