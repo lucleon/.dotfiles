@@ -1,10 +1,3 @@
-local M = {
-    setup = function(on_attach, capabilities)
-        require('lspconfig').bashls.setup({
-            on_attach = on_attach,
-            capabilities = capabilities,
-        })
-    end,
+return {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }
-
-return M

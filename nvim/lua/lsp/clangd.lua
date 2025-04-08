@@ -1,12 +1,8 @@
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-local M = {
-  setup = function(on_attach, capabilities)
-    require('lspconfig').clangd.setup({
-      on_attach = on_attach,
-      capabilities = capabilities, 
-    })
+return {
+  on_attach = function(client, bufnr)
+    -- Custom on_attach actions specific to clangd can be added here
   end,
-
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  -- Additional clangd-specific settings can be included here
 }
 
-return M
