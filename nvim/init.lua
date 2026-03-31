@@ -1,24 +1,10 @@
-local vim = vim
 vim.g.mapleader = ','
 
-_G.global = {}
-_G.global.float_border_opts = { border = 'rounded', focusable = false, scope = 'line' }
+local ui = require('config.ui')
 
-require('config.lazy')
+vim.opt.completeopt:append('noselect')
 
-vim.lsp.enable({
-  'basedpyright',
-  'clangd',
-  'luals'
-})
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
-})
-
-vim.cmd("set completeopt+=noselect")
+require('config.options')
+require('config.mappings')
+require('config.autocmds')
+require('config.lsp')
