@@ -49,5 +49,9 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({count=-1, float=true})
+end)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({count=1, float=true})
+end)

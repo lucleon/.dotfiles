@@ -1,6 +1,6 @@
 vim.lsp.enable({
-  'basedpyright',
   'ruff',
+  'basedpyright',
   'clangd',
   'luals',
 })

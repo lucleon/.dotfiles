@@ -1,5 +1,5 @@
 return {
   cmd = { 'clangd', '--background-index', '--clang-tidy' },
-  filetypes = { 'c', 'cpp', 'h', 'hpp' },
+  filetypes = { 'c', 'cpp'},
   root_markers = { '.clangd', 'compile_commands.json', '.git' },
 }
