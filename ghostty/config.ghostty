@@ -1,0 +1,11 @@
+theme = Catppuccin Mocha
+
+shell-integration-features = sudo
+copy-on-select = clipboard
+
+font-family = Nordwand Mono
+#font-family = JetBrains Mono
+#font-family = Iosevka
+#font-family-bold = Iosevka Heavy
+
+#font-thicken = true
