@@ -1,3 +1,5 @@
+command = /bin/zsh -l
+
 theme = Catppuccin Mocha
 
 shell-integration-features = sudo
