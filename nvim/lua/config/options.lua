@@ -1,4 +1,11 @@
-vim.opt.completeopt = {'menu', 'menuone' , 'noselect'}
+-- Completion: Neovim 0.12 can show the menu while typing on its own
+-- ('autocomplete'), using the sources in 'complete'. Adding "o" feeds it from
+-- the LSP clients via 'omnifunc' (set by vim.lsp on attach).
+vim.opt.completeopt = { 'menuone', 'noselect', 'popup', 'fuzzy' }
+vim.opt.autocomplete = true
+vim.opt.autocompletedelay = 50
+vim.opt.complete:append('o')        -- include LSP for the current buffer
+vim.opt_global.complete:append('o') -- and as the default for new buffers
 vim.opt.hidden = true
 vim.opt.expandtab = true
 vim.opt.ignorecase = true               -- Ignore case

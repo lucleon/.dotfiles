@@ -3,7 +3,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     local buf = ev.buf
 
-    -- completion (what you already have)
+    -- Feed this client's candidates into Neovim's builtin completion.
+    -- 'autocomplete' (options.lua) shows them while typing.
     if client and client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
     end
@@ -22,22 +23,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('<leader>f', function() vim.lsp.buf.format({ async = true }) end)
   end,
 })
-vim.opt.completeopt = { 'menuone', 'popup', 'noselect' }
 vim.keymap.set('i', '<C-Space>', function()
   vim.lsp.completion.get()
-end)
+end, { desc = 'Trigger completion' })
 
+-- Only accept with <CR> when an item was explicitly selected (Tab/C-n), so
+-- plain Enter still inserts a newline while the menu is open.
 vim.keymap.set('i', '<CR>', function()
-  return vim.fn.pumvisible() == 1 and '<C-y>' or '<CR>'
-end, { expr = true })
+  local selected = vim.fn.complete_info({ 'selected' }).selected
+  return selected ~= -1 and '<C-y>' or '<CR>'
+end, { expr = true, desc = 'Accept selected completion' })
 
 vim.keymap.set('i', '<Tab>', function()
   return vim.fn.pumvisible() == 1 and '<C-n>' or '<Tab>'
-end, { expr = true })
+end, { expr = true, desc = 'Next completion item' })
 
 vim.keymap.set('i', '<S-Tab>', function()
   return vim.fn.pumvisible() == 1 and '<C-p>' or '<S-Tab>'
-end, { expr = true })
+end, { expr = true, desc = 'Previous completion item' })
 vim.diagnostic.config({
   virtual_text = {
     spacing = 2,
