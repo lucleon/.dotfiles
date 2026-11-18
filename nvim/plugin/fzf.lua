@@ -11,19 +11,9 @@ fzf.setup({
   },
 })
 
-local function search_cwd()
-  local workspace = vim.fn.expand('~/ros_ws')
-
-  if vim.fn.isdirectory(workspace) == 1 then
-    return workspace
-  end
-
-  return vim.fn.getcwd()
-end
-
 vim.keymap.set('n', '<leader>ff', function()
   fzf.files({
-    cwd = search_cwd(),
+    cwd = vim.fn.getcwd(),
     fd_opts = '--color=never --type f --type l '
       .. '--exclude .git --exclude .jj '
       .. '--exclude build --exclude install --exclude log '
@@ -31,11 +21,11 @@ vim.keymap.set('n', '<leader>ff', function()
   })
 end, { desc = '[F]ind [F]iles' })
 vim.keymap.set('n', '<leader>fg', function()
-  fzf.live_grep({ cwd = search_cwd() })
+  fzf.live_grep({ cwd = vim.fn.getcwd() })
 end, { desc = '[F]ind [G]rep' })
 
 vim.keymap.set('n', '<leader>fw', function()
-  fzf.grep_cword({ cwd = search_cwd() })
+  fzf.grep_cword({ cwd = vim.fn.getcwd() })
 end, { desc = '[F]ind [W]ord' })
 vim.keymap.set('n', '<leader>gd', fzf.lsp_definitions)
 vim.keymap.set('n', '<leader>gr', fzf.lsp_references)
